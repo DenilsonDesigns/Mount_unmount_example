@@ -1,46 +1,25 @@
-# Getting Started with Create React App
+## React Mount/Unmount Example In Hooks API
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### With the React Hooks API, using logic to run on the mount or unmount of a component is incredibly easy. However it's amazing how many people who come from the class-based component days don't know how to implement it!
 
-## Available Scripts
+### With the useEffect hook, we easily have access to call logic on the mount/unmount of a component. Look at the below example:
 
-In the project directory, you can run:
+```
+  useEffect(() => {
+    // Logic to run on mount here:
+    console.log("Component Mounted");
+    return () => {
+    // Inside the return callback, we write our
+    // "unmount" logic.
+      console.log("Component UnMounted");
+    };
+    // Passing an empty array as a dependency means
+    // the hook will run on mount.
+  }, []);
+```
 
-### `npm start`
+### If you run this simple application you can see this in effect. When the app loads, it will mount the "TopComponent" component by default. If you click the "UnMount" button on screen, it will unmount the TopComponent and Mount the "BottomComponent" component, you can see the corresponding log statements when a component is mounted/unmounted:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![Alt text](./mount_example.png?raw=true "Optional Title")
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Good Luck!
